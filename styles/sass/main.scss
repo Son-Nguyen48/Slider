@@ -15,57 +15,13 @@ body {
   font-size: 1.6rem;
 }
 
-section {
-  height: 100vh;
-  width: 100%;
+.item {
+  height: 30rem;
 }
 
-.slider {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-
-  .slide {
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: 50% auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    transform: translate(100%);
-
-    .content {
-      position: absolute;
-      color: #fff;
-      font-size: 2rem;
-      top: 2rem;
-      left: 50%;
-      transform: translate(-50%, 50%);
-    }
-
-    &.active {
-      transform: translate(0%);
-    }
-  }
-}
-
-.button {
-  .btn {
-    bottom: 0;
-    position: absolute;
-    width: 2rem;
-  }
-  .next {
-    right: 0;
-  }
-
-  .prev {
-    left: 0;
-  }
-
+.next,
+.prev {
   svg {
-    width: 2%;
+    width: 20%;
   }
 }
