@@ -6,7 +6,7 @@
 }
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
 
 body {
@@ -47,6 +47,17 @@ section {
   transform: translate(0%);
 }
 
+.button .btn {
+  bottom: 0;
+  position: absolute;
+  width: 2rem;
+}
+.button .next {
+  right: 0;
+}
+.button .prev {
+  left: 0;
+}
 .button svg {
   width: 2%;
 }
