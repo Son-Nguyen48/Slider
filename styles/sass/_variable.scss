@@ -1,0 +1,33 @@
+$top-bar: #db4c3f;
+$search-bar: #e27065;
+$hover-color: #eeeeee;
+$priority-1-color: #db4c3f;
+$priority-2-color: #eb8909;
+$priority-2-color: #246fe0;
+$priority-2-color: #ffffff;
+$inbox-color: #90b5ed;
+$today-color: #058527;
+$upcoming-color: #692fc2;
+$circle-color: #808080;
+$white-color: #ffffff;
+$left-menu: #fafafa;
+
+.gray {
+  color: gray;
+}
+
+.gray_less {
+  color: rgb(209, 196, 196);
+}
+
+.letter_spacing_small_text {
+  letter-spacing: 1.2;
+}
+
+.hide {
+  display: none;
+}
+
+.active {
+  display: block;
+}

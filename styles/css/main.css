@@ -1,4 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@300;400;500;700&display=swap");
+.gray {
+  color: gray;
+}
+
+.gray_less {
+  color: rgb(209, 196, 196);
+}
+
+.letter_spacing_small_text {
+  letter-spacing: 1.2;
+}
+
+.hide {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.btnControlStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3rem;
+  color: #fff;
+  height: 2.8rem;
+  min-width: 2.8rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0 0.4rem;
+}
+
+.flex {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.centerThing {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.margin-top-left-menu-item {
+  margin-top: 1.6rem;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,56 +60,256 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "-apple-system", sans-serif;
   font-size: 1.6rem;
-}
-
-section {
   height: 100vh;
-  width: 100%;
 }
 
-.slider {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+li {
+  list-style: none;
 }
-.slider .slide {
-  height: 100%;
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.top_bar {
+  background-color: #db4c3f;
+  position: fixed;
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: 50% auto;
+  z-index: 100;
+}
+.top_bar_inner {
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  height: 4.4rem;
+}
+.top_bar_inner button:hover {
+  opacity: 0.6;
+}
+.top_bar_inner .left_control,
+.top_bar_inner .right_control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+.top_bar_inner .left_control-search {
+  display: flex;
+}
+.top_bar_inner .left_control-search_input {
+  border: none;
+  border-radius: 0.4rem;
+}
+.top_bar_inner .right_control .completed-todo {
+  font-size: 1.2rem;
+  margin-left: 0.4rem;
+}
+
+main {
+  display: flex;
+  padding-top: 3.4rem;
+}
+main .left_menu {
+  width: 34%;
+  padding: 3rem 0 0 3.4rem;
+  background-color: #fafafa;
+  height: auto;
+}
+main .left_menu-inbox, main .left_menu-today, main .left_menu-upcoming, main .left_menu-filter, main .left_menu-projects {
+  height: 10vh;
+  transition: all 0.6s ease;
+}
+main .left_menu-inbox::after, main .left_menu-today::after, main .left_menu-upcoming::after, main .left_menu-filter::after, main .left_menu-projects::after {
+  content: "";
+  width: 10%;
+}
+main .left_menu-inbox:hover, main .left_menu-today:hover, main .left_menu-upcoming:hover, main .left_menu-filter:hover, main .left_menu-projects:hover {
+  background-color: rgb(196, 187, 187);
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+main .left_menu-box {
+  width: 100%;
+}
+main .left_menu-box .aqv2kvH {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+main .project {
+  width: 100%;
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+main .project .project_header {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3rem;
+}
+main .project .project_header button {
+  border-radius: 0.8rem;
+  background-color: transparent;
+}
+main .project .project_header button:hover {
+  background-color: rgb(184, 174, 174);
+}
+main .project .project_list {
+  max-width: 80rem;
+  margin: 0 auto 2rem auto;
+}
+main .project .project_list .todo-item-flex {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  border-bottom: 0.12rem solid rgb(190, 182, 182);
+  font-size: 1.4rem;
+}
+main .project .project_list .todo-item-flex .todo-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+main .project .project_list .todo-item-flex .todo-content,
+main .project .project_list .todo-item-flex .todo-status,
+main .project .project_list .todo-item-flex .todo-created {
+  font-size: 1.2rem;
+}
+main .project .project_list .todo-item-flex .todo-edit_control {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.4rem;
+  position: relative;
+}
+main .project .project_list .todo-item-flex .todo-edit_control .todo-edit_control-edit:hover::before {
+  display: block;
+}
+main .project .project_list .todo-item-flex .todo-edit_control .todo-edit_control-edit::before {
   position: absolute;
-  transform: translate(100%);
-}
-.slider .slide .content {
-  position: absolute;
-  color: #fff;
-  font-size: 2rem;
-  top: 2rem;
-  left: 50%;
-  transform: translate(-50%, 50%);
-}
-.slider .slide.active {
-  transform: translate(0%);
-}
-
-.button .btn {
   bottom: 0;
+  left: 50%;
+  transform: translate(-110%, 0%);
+  content: "Edit Task";
+  background-color: #f5f7f5;
+  border: 0.012rem solid #333;
+  border-radius: 0.4rem;
+  padding: 0.26rem;
+  width: 6rem;
+  display: none;
+  background-color: transparent;
+}
+main .project .project_list .todo-item-flex .todo-edit_control .todo-edit_control-delete:hover::before {
+  display: block;
+}
+main .project .project_list .todo-item-flex .todo-edit_control .todo-edit_control-delete::before {
   position: absolute;
-  width: 2rem;
+  bottom: 0;
+  left: 50%;
+  transform: translate(0%, 0%);
+  content: "Delete Task";
+  background-color: #f5f7f5;
+  border: 0.012rem solid #333;
+  border-radius: 0.4rem;
+  padding: 0.26rem;
+  width: 7.8rem;
+  display: none;
+  background-color: transparent;
 }
-.button .next {
-  right: 0;
+main .project .project_list .todo-item-flex .todo-edit_control .todo-edit_control-more {
+  width: 2.8rem;
+  height: 3.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.button .prev {
-  left: 0;
+main .project .project_list .todo-item-flex .todo-edit_control button {
+  background-color: transparent;
+  border-radius: 0.8rem;
 }
-.button svg {
-  width: 2%;
+main .project .project_list .todo-item-flex .todo-edit_control button:hover {
+  background-color: rgb(184, 174, 174);
+}
+main .project .project_list-add_form .todo_content, main .project .project_list-edit_form .todo_content {
+  padding: 1.2rem;
+  border: 0.12rem rgb(223, 219, 219) solid;
+  border-radius: 0.6rem;
+}
+main .project .project_list-add_form .todo_content input, main .project .project_list-edit_form .todo_content input {
+  display: block;
+  width: 100%;
+  border: none;
+  margin-bottom: 1.2rem;
+  color: #db4c3f;
+}
+main .project .project_list-add_form .todo_content input:focus-visible, main .project .project_list-edit_form .todo_content input:focus-visible {
+  border: none;
+  color: #db4c3f;
+  outline: none;
+}
+main .project .project_list-add_form .todo_edit_control, main .project .project_list-edit_form .todo_edit_control {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.2rem;
+  padding: 1rem;
+}
+main .project .project_list-add_form .todo_edit_control button, main .project .project_list-edit_form .todo_edit_control button {
+  padding: 1rem;
+  border-radius: 0.4rem;
+}
+main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button {
+  background-color: #f1b7b2;
+  color: #ffffff;
+  cursor: not-allowed;
+  transition: all 0.8s ease;
+}
+main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button.allowAddTask, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button.allowAddTask {
+  background-color: #db4c3f;
+  cursor: pointer;
+}
+main .project .project_list-add_form .todo_edit_control-cancel_button, main .project .project_list-edit_form .todo_edit_control-cancel_button {
+  background-color: rgb(185, 174, 174);
+  color: #333;
+}
+main .project .project_list-add_form .todo_edit_control-cancel_button:hover, main .project .project_list-edit_form .todo_edit_control-cancel_button:hover {
+  background-color: gray;
+}
+main .project .add_todo_btn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.8s ease;
+  font-size: 1.4rem;
+  color: gray;
+  margin-bottom: 2rem;
+}
+main .project .add_todo_btn .add_todo_btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.7rem;
+  width: 1.7rem;
+  color: #db4c3f;
+}
+main .project .add_todo_btn:hover {
+  color: #db4c3f;
+}
+main .project .add_todo_btn:hover .add_todo_btn-icon {
+  color: #ffffff;
+  background-color: #db4c3f;
+  border-radius: 50%;
+  padding: 0.12rem;
 }
 
 /*# sourceMappingURL=main.css.map */
