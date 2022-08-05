@@ -166,6 +166,9 @@ main .project .project_list {
   max-width: 80rem;
   margin: 0 auto 2rem auto;
 }
+main .project .project_list .todo-item {
+  cursor: pointer;
+}
 main .project .project_list .todo-item-flex {
   display: flex;
   justify-content: space-between;
@@ -244,43 +247,69 @@ main .project .project_list-add_form .todo_content, main .project .project_list-
   border: 0.12rem rgb(223, 219, 219) solid;
   border-radius: 0.6rem;
 }
+main .project .project_list-add_form .todo_content select, main .project .project_list-edit_form .todo_content select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #202020;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  border: 0.12rem solid #db4c3f;
+  cursor: pointer;
+}
+main .project .project_list-add_form .todo_content select:focus-visible, main .project .project_list-edit_form .todo_content select:focus-visible {
+  border: 0.12rem solid #db4c3f;
+  outline: none;
+}
 main .project .project_list-add_form .todo_content input, main .project .project_list-edit_form .todo_content input {
   display: block;
   width: 100%;
   border: none;
   margin-bottom: 1.2rem;
-  color: #db4c3f;
+  color: #202020;
 }
 main .project .project_list-add_form .todo_content input:focus-visible, main .project .project_list-edit_form .todo_content input:focus-visible {
   border: none;
-  color: #db4c3f;
+  color: #202020;
   outline: none;
 }
-main .project .project_list-add_form .todo_edit_control, main .project .project_list-edit_form .todo_edit_control {
+main .project .project_list-add_form .todo_edit_control,
+main .project .project_list-add_form .todo_add_control, main .project .project_list-edit_form .todo_edit_control,
+main .project .project_list-edit_form .todo_add_control {
   display: flex;
   justify-content: flex-end;
   gap: 1.2rem;
   padding: 1rem;
 }
-main .project .project_list-add_form .todo_edit_control button, main .project .project_list-edit_form .todo_edit_control button {
+main .project .project_list-add_form .todo_edit_control button,
+main .project .project_list-add_form .todo_add_control button, main .project .project_list-edit_form .todo_edit_control button,
+main .project .project_list-edit_form .todo_add_control button {
   padding: 1rem;
   border-radius: 0.4rem;
 }
-main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button {
+main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button,
+main .project .project_list-add_form .todo_add_control .todo_control-confirm_button, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button,
+main .project .project_list-edit_form .todo_add_control .todo_control-confirm_button {
   background-color: #f1b7b2;
   color: #ffffff;
   cursor: not-allowed;
   transition: all 0.8s ease;
 }
-main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button.allowAddTask, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button.allowAddTask {
+main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button.allowAddTask,
+main .project .project_list-add_form .todo_add_control .todo_control-confirm_button.allowAddTask, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button.allowAddTask,
+main .project .project_list-edit_form .todo_add_control .todo_control-confirm_button.allowAddTask {
   background-color: #db4c3f;
   cursor: pointer;
 }
-main .project .project_list-add_form .todo_edit_control-cancel_button, main .project .project_list-edit_form .todo_edit_control-cancel_button {
+main .project .project_list-add_form .todo_edit_control-cancel_button,
+main .project .project_list-add_form .todo_add_control-cancel_button, main .project .project_list-edit_form .todo_edit_control-cancel_button,
+main .project .project_list-edit_form .todo_add_control-cancel_button {
   background-color: rgb(185, 174, 174);
   color: #333;
 }
-main .project .project_list-add_form .todo_edit_control-cancel_button:hover, main .project .project_list-edit_form .todo_edit_control-cancel_button:hover {
+main .project .project_list-add_form .todo_edit_control-cancel_button:hover,
+main .project .project_list-add_form .todo_add_control-cancel_button:hover, main .project .project_list-edit_form .todo_edit_control-cancel_button:hover,
+main .project .project_list-edit_form .todo_add_control-cancel_button:hover {
   background-color: gray;
 }
 main .project .add_todo_btn {

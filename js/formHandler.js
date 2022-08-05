@@ -6,6 +6,7 @@ function handleAddForm(container) {
       taskName: this.querySelector(".taskName"),
       taskDescription: this.querySelector(".taskDescription"),
       taskDueDate: this.querySelector(".taskDueDate"),
+      taskStatus: this.querySelector(".taskStatus"),
       cancelBtn: this.querySelector(".todo_control-cancel_button"),
       confirmBtn: this.querySelector(".todo_control-confirm_button")
     };

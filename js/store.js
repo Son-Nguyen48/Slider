@@ -7,7 +7,9 @@ function Store() {
       todo__Title: "Go to the Gym",
       todo_Description: "Go to somewhere!",
       todo__Status: "Doing",
-      todo__CreatedAt: "2022-02-05"
+      todo__CreatedAt: "2022-02-05",
+      priority: "Priority 1",
+      color: "$priority-1-color"
     },
 
     {
@@ -15,7 +17,9 @@ function Store() {
       todo__Title: "Go to the School",
       todo_Description: "Go to somewhere!",
       todo__Status: "Done",
-      todo__CreatedAt: "2022-06-01"
+      todo__CreatedAt: "2022-06-01",
+      priority: "Priority 3",
+      color: "$priority-3-color"
     },
 
     {
@@ -23,7 +27,9 @@ function Store() {
       todo__Title: "Go to the Hospital",
       todo_Description: "Go to somewhere! ",
       todo__Status: "Doing",
-      todo__CreatedAt: "2022-02-08"
+      todo__CreatedAt: "2022-02-08",
+      priority: "Priority 3",
+      color: "$priority-3-color"
     },
 
     {
@@ -31,22 +37,51 @@ function Store() {
       todo__Title: "Go to the Supermarket",
       todo_Description: "Go to somewhere!",
       todo__Status: "Done",
-      todo__CreatedAt: "2022-04-08"
+      todo__CreatedAt: "2022-04-08",
+      priority: "Priority 3",
+      color: "$priority-3-color"
     },
     {
       id: 5,
-      todo__Title: "Go to the Supermarket",
+      todo__Title: "Go to the Movie theater",
       todo_Description: "Go to somewhere!",
       todo__Status: "Done",
-      todo__CreatedAt: "2022-04-08"
+      todo__CreatedAt: "2022-04-08",
+      priority: "Priority 3",
+      color: "$priority-3-color"
     },
 
     {
       id: 6,
-      todo__Title: "Go to the Supermarket",
+      todo__Title: "Go to the Stadium",
       todo_Description: "Go to somewhere!",
       todo__Status: "Done",
-      todo__CreatedAt: "2022-04-08"
+      todo__CreatedAt: "2022-04-08",
+      priority: "Priority 2",
+      color: "$priority-2-color"
+    }
+  ];
+
+  this.listPriority = [
+    {
+      id: 1,
+      priority: "Priority 1",
+      color: "$priority-1-color"
+    },
+    {
+      id: 2,
+      priority: "Priority 2",
+      color: "$priority-2-color"
+    },
+    {
+      id: 3,
+      priority: "Priority 3",
+      color: "$priority-3-color"
+    },
+    {
+      id: 4,
+      priority: "Priority 4",
+      color: "$priority-4-color"
     }
   ];
 
@@ -59,10 +94,15 @@ function Store() {
         id: this.listTodo.length + 1,
         todo__Title: `${form.taskName.value}`,
         todo_Description: `${form.taskDescription.value}`,
-        todo__Status: "Doing",
+        todo__Status: `${form.taskStatus.value}`,
         todo__CreatedAt: `${form.taskDueDate.value}`
       });
-      this.listTodo = list;
+      form.taskName.value = "";
+      form.taskName.focus();
+      form.taskDescription.value = "";
+      form.taskStatus.value = "";
+      form.taskDueDate.value = "";
+
       fetchTodo(this.listTodo);
     },
     updateTodo: (e, form, id) => {

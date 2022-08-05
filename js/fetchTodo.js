@@ -9,9 +9,11 @@ export default function fetchTodo(listTodo) {
     <li class="todo-item" id="${todo.id}">
         <div class="todo-item-flex hide">
             <div class="todo-item-left flex">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <div class="todo-item-left-priority">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
                 <div class="todo-item-content">
                     <p class="todo-title letter_spacing_small_text">${todo.todo__Title}</p>
                     <p class="todo-content gray letter_spacing_small_text">${todo.todo_Description}</p>
@@ -52,6 +54,15 @@ export default function fetchTodo(listTodo) {
                     <input class="taskDescription" type="text" placeholder="Description" value="${todo.todo_Description}"/>
                     <input class="taskStatus" type="text" placeholder="Status" value="${todo.todo__Status}"/>
                     <input type="date" class="taskDueDate" value="${todo.todo__CreatedAt}"/>
+                    <select name="priority" id="priority" value="${todo.priority}">
+                      <option value="Select-Priority-for-the-task">
+                        Select Priority for the task
+                      </option>
+                      <option value="Priority-1">Priority 1</option>
+                      <option value="Priority-2">Priority 2</option>
+                      <option value="Priority-3">Priority 3</option>
+                      <option value="Priority-4">Priority 4</option>
+                    </select>
                 </div>
                 <div class="todo_edit_control">
                     <button class="todo_control-cancel_button" >Cancel</button>
@@ -84,6 +95,12 @@ export default function fetchTodo(listTodo) {
 
       deleteTaskBtn.onclick = (e) => Store.deleteTodo(e, editForm, id);
 
+      task.firstElementChild.onclick = (e) => {
+        e.preventDefault();
+        task.firstElementChild.classList.remove("active");
+        task.lastElementChild.classList.add("active");
+      };
+
       editTaskBtn.onclick = (e) => {
         e.preventDefault();
         console.log("go here");
@@ -103,3 +120,8 @@ export default function fetchTodo(listTodo) {
 
   //Handle Edit task
 }
+
+// queryEditForm.taskName.focus();
+// let taskNameValue = queryEditForm.taskName.value;
+// queryEditForm.taskName.value = "";
+// queryEditForm.taskName.value = taskNameValue;

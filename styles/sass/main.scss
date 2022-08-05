@@ -143,12 +143,22 @@ main {
     .project_list {
       max-width: 80rem;
       margin: 0 auto 2rem auto;
+
+      .todo-item {
+        cursor: pointer;
+      }
       .todo-item-flex {
         display: flex;
         justify-content: space-between;
         margin: 2rem auto;
         border-bottom: 0.12rem solid rgb(190, 182, 182);
         font-size: 1.4rem;
+
+        // .todo-item-left-priority {
+        //   svg {
+        //     color: $priority-1-color;
+        //   }
+        // }
 
         .todo-item-content {
           display: flex;
@@ -242,22 +252,39 @@ main {
           border: 0.12rem rgb(223, 219, 219) solid;
           border-radius: 0.6rem;
 
+          select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            color: #202020;
+            border-radius: 0.6rem;
+            padding: 0.6rem;
+            border: 0.12rem solid $top-bar;
+            cursor: pointer;
+
+            &:focus-visible {
+              border: 0.12rem solid $top-bar;
+              outline: none;
+            }
+          }
+
           input {
             display: block;
             width: 100%;
             border: none;
             margin-bottom: 1.2rem;
-            color: $top-bar;
+            color: #202020;
 
             &:focus-visible {
               border: none;
-              color: $top-bar;
+              color: #202020;
               outline: none;
             }
           }
         }
 
-        .todo_edit_control {
+        .todo_edit_control,
+        .todo_add_control {
           display: flex;
           justify-content: flex-end;
           gap: 1.2rem;
