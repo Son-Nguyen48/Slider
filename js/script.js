@@ -34,7 +34,6 @@ queryAddForm.cancelBtn.onclick = (e) => {
     .querySelector(".project_list-add_form")
     .classList.remove("active");
 };
-
 //Add Task Click
 queryAddForm.confirmBtn.onclick = (e) => Store.addTodo(e, queryAddForm);
 

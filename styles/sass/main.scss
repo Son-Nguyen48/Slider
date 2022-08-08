@@ -300,9 +300,11 @@ main {
             color: $white-color;
             cursor: not-allowed;
             transition: all 0.8s ease;
+            pointer-events: none;
 
             &.allowAddTask {
               background-color: #db4c3f;
+              pointer-events: all;
               cursor: pointer;
             }
           }

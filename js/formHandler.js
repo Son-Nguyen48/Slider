@@ -8,12 +8,14 @@ function handleAddForm(container) {
       taskDueDate: this.querySelector(".taskDueDate"),
       taskStatus: this.querySelector(".taskStatus"),
       cancelBtn: this.querySelector(".todo_control-cancel_button"),
-      confirmBtn: this.querySelector(".todo_control-confirm_button")
+      confirmBtn: this.querySelector(".todo_control-confirm_button"),
+      taskPriority: this.querySelector("#priority")
     };
   };
 
   this.onChangeTaskName = function (e) {
-    if (this.taskName.value.trim()) {
+    const taskNameValue = this.taskName.value.trim();
+    if (taskNameValue) {
       this.confirmBtn.classList.add("allowAddTask");
     } else {
       this.confirmBtn.classList.remove("allowAddTask");

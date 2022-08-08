@@ -9,7 +9,7 @@ function Store() {
       todo__Status: "Doing",
       todo__CreatedAt: "2022-02-05",
       priority: "Priority 1",
-      color: "$priority-1-color"
+      color: "#db4c3f"
     },
 
     {
@@ -19,7 +19,7 @@ function Store() {
       todo__Status: "Done",
       todo__CreatedAt: "2022-06-01",
       priority: "Priority 3",
-      color: "$priority-3-color"
+      color: "#246fe0"
     },
 
     {
@@ -28,8 +28,8 @@ function Store() {
       todo_Description: "Go to somewhere! ",
       todo__Status: "Doing",
       todo__CreatedAt: "2022-02-08",
-      priority: "Priority 3",
-      color: "$priority-3-color"
+      priority: "Priority 4",
+      color: "#000000"
     },
 
     {
@@ -39,7 +39,7 @@ function Store() {
       todo__Status: "Done",
       todo__CreatedAt: "2022-04-08",
       priority: "Priority 3",
-      color: "$priority-3-color"
+      color: "#246fe0"
     },
     {
       id: 5,
@@ -47,8 +47,8 @@ function Store() {
       todo_Description: "Go to somewhere!",
       todo__Status: "Done",
       todo__CreatedAt: "2022-04-08",
-      priority: "Priority 3",
-      color: "$priority-3-color"
+      priority: "Priority 2",
+      color: "#eb8909"
     },
 
     {
@@ -57,8 +57,8 @@ function Store() {
       todo_Description: "Go to somewhere!",
       todo__Status: "Done",
       todo__CreatedAt: "2022-04-08",
-      priority: "Priority 2",
-      color: "$priority-2-color"
+      priority: "Priority 1",
+      color: "#db4c3f"
     }
   ];
 
@@ -66,22 +66,22 @@ function Store() {
     {
       id: 1,
       priority: "Priority 1",
-      color: "$priority-1-color"
+      color: "#db4c3f"
     },
     {
       id: 2,
       priority: "Priority 2",
-      color: "$priority-2-color"
+      color: "#eb8909"
     },
     {
       id: 3,
       priority: "Priority 3",
-      color: "$priority-3-color"
+      color: "#246fe0"
     },
     {
       id: 4,
       priority: "Priority 4",
-      color: "$priority-4-color"
+      color: "#000000"
     }
   ];
 
@@ -90,12 +90,23 @@ function Store() {
     addTodo: (e, form) => {
       e.preventDefault();
       const list = this.listTodo;
+
       list.push({
         id: this.listTodo.length + 1,
         todo__Title: `${form.taskName.value}`,
         todo_Description: `${form.taskDescription.value}`,
         todo__Status: `${form.taskStatus.value}`,
-        todo__CreatedAt: `${form.taskDueDate.value}`
+        todo__CreatedAt: `${form.taskDueDate.value}`,
+        color: `${
+          this.listPriority.filter((option) => {
+            return option.priority === form.taskPriority.value;
+          })[0].color
+        }`,
+        priority: `${
+          this.listPriority.filter((option) => {
+            return option.priority === form.taskPriority.value;
+          })[0].priority
+        }`
       });
       form.taskName.value = "";
       form.taskName.focus();
@@ -113,18 +124,28 @@ function Store() {
           task.todo_Description = form.querySelector(".taskDescription").value;
           task.todo__Status = form.querySelector(".taskStatus").value;
           task.todo__CreatedAt = form.querySelector(".taskDueDate").value;
+          task.priority = form.querySelector("#priority").value;
         }
         return task;
       });
       fetchTodo(this.listTodo);
     },
-    deleteTodo: (e, form, id) => {
+    deleteTodo: (e, id) => {
       e.preventDefault();
       const taskDeletedIndex = this.listTodo.findIndex(
         (task) => task.id === id
       );
       this.listTodo.splice(taskDeletedIndex, 1);
       fetchTodo(this.listTodo);
+    },
+    queryPriority: (id) => {
+      let result = "";
+      this.listTodo.forEach((task) => {
+        if (task.id === id) {
+          result = task.priority;
+        }
+      });
+      return result;
     }
   };
 }

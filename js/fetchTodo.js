@@ -54,14 +54,14 @@ export default function fetchTodo(listTodo) {
                     <input class="taskDescription" type="text" placeholder="Description" value="${todo.todo_Description}"/>
                     <input class="taskStatus" type="text" placeholder="Status" value="${todo.todo__Status}"/>
                     <input type="date" class="taskDueDate" value="${todo.todo__CreatedAt}"/>
-                    <select name="priority" id="priority" value="${todo.priority}">
+                    <select name="priority" id="priority">
                       <option value="Select-Priority-for-the-task">
                         Select Priority for the task
                       </option>
-                      <option value="Priority-1">Priority 1</option>
-                      <option value="Priority-2">Priority 2</option>
-                      <option value="Priority-3">Priority 3</option>
-                      <option value="Priority-4">Priority 4</option>
+                      <option value="Priority 1">Priority 1</option>
+                      <option value="Priority 2">Priority 2</option>
+                      <option value="Priority 3">Priority 3</option>
+                      <option value="Priority 4">Priority 4</option>
                     </select>
                 </div>
                 <div class="todo_edit_control">
@@ -83,17 +83,51 @@ export default function fetchTodo(listTodo) {
       const deleteTaskBtn = task.querySelector(".todo-edit_control-delete");
       const editForm = task.lastElementChild;
       const queryEditForm = project1.queryForm.bind(editForm)();
+      const taskTodo = task.firstElementChild;
+      const taskPriorityNode = taskTodo.firstElementChild.firstElementChild;
 
+      const idTask = Number(task.id);
+
+      //color Priority Flag
+      const priorityIcon = taskPriorityNode.firstElementChild;
+      const priority = Array.from(Store.queryPriority(idTask));
+      priority[8] = "-";
+      const priorityTask = priority.join("").toLowerCase();
+      console.log(priorityTask);
+      priorityIcon.id = `${priorityTask}`;
+
+      const optionListPriority = Array.from(
+        queryEditForm.taskPriority.getElementsByTagName("option")
+      );
+      optionListPriority.forEach((option) => {
+        priority[8] = " ";
+        if (option.value === priority.join("")) {
+          const selectedAttribute = document.createAttribute("selected");
+          option.setAttributeNode(selectedAttribute);
+        }
+      });
+
+      //Edit title Task name handle
       queryEditForm.taskName.onkeyup = (e) =>
         project1.onChangeTaskName.bind(queryEditForm)(e);
+      queryEditForm.taskDescription.onkeyup = (e) =>
+        project1.onChangeTaskName.bind(queryEditForm)(e);
+      queryEditForm.taskStatus.onkeyup = (e) =>
+        project1.onChangeTaskName.bind(queryEditForm)(e);
+      queryEditForm.taskDueDate.onkeyup = (e) =>
+        project1.onChangeTaskName.bind(queryEditForm)(e);
+      queryEditForm.taskPriority.onkeyup = (e) =>
+        project1.onChangeTaskName.bind(queryEditForm)(e);
+      queryEditForm.taskDueDate.onclick = (e) =>
+        project1.onChangeTaskName.bind(queryEditForm)(e);
+      queryEditForm.taskPriority.onclick = (e) =>
+        project1.onChangeTaskName.bind(queryEditForm)(e);
 
-      const id = Number(task.id);
-
-      // const handleEditTask = project1.handleEditTask;
+      // Click confirm edit task handle
       queryEditForm.confirmBtn.onclick = (e) =>
-        Store.updateTodo(e, editForm, id);
+        Store.updateTodo(e, editForm, idTask);
 
-      deleteTaskBtn.onclick = (e) => Store.deleteTodo(e, editForm, id);
+      deleteTaskBtn.onclick = (e) => Store.deleteTodo(e, idTask);
 
       task.firstElementChild.onclick = (e) => {
         e.preventDefault();

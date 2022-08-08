@@ -19,6 +19,22 @@
   display: block;
 }
 
+#priority-1 {
+  color: #db4c3f;
+}
+
+#priority-2 {
+  color: #eb8909;
+}
+
+#priority-3 {
+  color: #246fe0;
+}
+
+#priority-4 {
+  color: #000000;
+}
+
 .btnControlStyle {
   display: flex;
   align-items: center;
@@ -294,11 +310,13 @@ main .project .project_list-edit_form .todo_add_control .todo_control-confirm_bu
   color: #ffffff;
   cursor: not-allowed;
   transition: all 0.8s ease;
+  pointer-events: none;
 }
 main .project .project_list-add_form .todo_edit_control .todo_control-confirm_button.allowAddTask,
 main .project .project_list-add_form .todo_add_control .todo_control-confirm_button.allowAddTask, main .project .project_list-edit_form .todo_edit_control .todo_control-confirm_button.allowAddTask,
 main .project .project_list-edit_form .todo_add_control .todo_control-confirm_button.allowAddTask {
   background-color: #db4c3f;
+  pointer-events: all;
   cursor: pointer;
 }
 main .project .project_list-add_form .todo_edit_control-cancel_button,
