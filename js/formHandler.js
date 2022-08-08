@@ -1,6 +1,8 @@
 function handleAddForm(container) {
   this.container = document.querySelector(container);
 
+  //query form function
+
   this.queryForm = function () {
     return {
       taskName: this.querySelector(".taskName"),
@@ -13,7 +15,9 @@ function handleAddForm(container) {
     };
   };
 
-  this.onChangeTaskName = function (e) {
+  //Change button ability when change value of input in edit form
+
+  this.onChangeEditTaskInput = function (e) {
     const taskNameValue = this.taskName.value.trim();
     if (taskNameValue) {
       this.confirmBtn.classList.add("allowAddTask");

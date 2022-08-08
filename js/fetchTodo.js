@@ -77,10 +77,16 @@ export default function fetchTodo(listTodo) {
   const projectList = document.querySelectorAll(".project_list");
   projectList.forEach((project) => {
     project.innerHTML = html;
+    //Handle actions in each Task
     const listTask = project.querySelectorAll(".todo-item");
     listTask.forEach((task) => {
-      const editTaskBtn = task.querySelector(".todo-edit_control-edit");
+      //Delete task when click delete button
+
       const deleteTaskBtn = task.querySelector(".todo-edit_control-delete");
+      deleteTaskBtn.onclick = (e) => Store.deleteTodo(e, idTask);
+
+      //Handle actions in edit form
+
       const editForm = task.lastElementChild;
       const queryEditForm = project1.queryForm.bind(editForm)();
       const taskTodo = task.firstElementChild;
@@ -88,13 +94,48 @@ export default function fetchTodo(listTodo) {
 
       const idTask = Number(task.id);
 
+      //Click Button edit task to open edit form
+
+      const editTaskBtn = task.querySelector(".todo-edit_control-edit");
+      editTaskBtn.onclick = (e) => {
+        e.preventDefault();
+        console.log("go here");
+        task.firstElementChild.classList.remove("active");
+        task.lastElementChild.classList.add("active");
+        queryEditForm.taskName.focus();
+        let taskNameValue = queryEditForm.taskName.value;
+        queryEditForm.taskName.value = "";
+        queryEditForm.taskName.value = taskNameValue;
+      };
+
+      //Click task element to open edit form focus and
+      //move cursor to the end of task name line
+
+      task.firstElementChild.onclick = (e) => {
+        e.preventDefault();
+        task.firstElementChild.classList.remove("active");
+        task.lastElementChild.classList.add("active");
+        queryEditForm.taskName.focus();
+        let taskNameValue = queryEditForm.taskName.value;
+        queryEditForm.taskName.value = "";
+        queryEditForm.taskName.value = taskNameValue;
+      };
+
+      queryEditForm.cancelBtn.onclick = (e) => {
+        e.preventDefault();
+        task.firstElementChild.classList.add("active");
+        editForm.classList.remove("active");
+      };
+
       //color Priority Flag
+
       const priorityIcon = taskPriorityNode.firstElementChild;
       const priority = Array.from(Store.queryPriority(idTask));
       priority[8] = "-";
-      const priorityTask = priority.join("").toLowerCase();
-      console.log(priorityTask);
-      priorityIcon.id = `${priorityTask}`;
+      const priorityTaskColorId = priority.join("").toLowerCase();
+      priorityIcon.id = `${priorityTaskColorId}`;
+
+      //Set Priority of each task when open edit form
 
       const optionListPriority = Array.from(
         queryEditForm.taskPriority.getElementsByTagName("option")
@@ -107,55 +148,29 @@ export default function fetchTodo(listTodo) {
         }
       });
 
-      //Edit title Task name handle
+      //Handle Button Edit task when change value in edit form
+
       queryEditForm.taskName.onkeyup = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
       queryEditForm.taskDescription.onkeyup = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
       queryEditForm.taskStatus.onkeyup = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
       queryEditForm.taskDueDate.onkeyup = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
       queryEditForm.taskPriority.onkeyup = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
       queryEditForm.taskDueDate.onclick = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
       queryEditForm.taskPriority.onclick = (e) =>
-        project1.onChangeTaskName.bind(queryEditForm)(e);
+        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
 
       // Click confirm edit task handle
+
       queryEditForm.confirmBtn.onclick = (e) =>
         Store.updateTodo(e, editForm, idTask);
-
-      deleteTaskBtn.onclick = (e) => Store.deleteTodo(e, idTask);
-
-      task.firstElementChild.onclick = (e) => {
-        e.preventDefault();
-        task.firstElementChild.classList.remove("active");
-        task.lastElementChild.classList.add("active");
-      };
-
-      editTaskBtn.onclick = (e) => {
-        e.preventDefault();
-        console.log("go here");
-        task.firstElementChild.classList.remove("active");
-        task.lastElementChild.classList.add("active");
-      };
-
-      queryEditForm.cancelBtn.onclick = (e) => {
-        e.preventDefault();
-        task.firstElementChild.classList.add("active");
-        editForm.classList.remove("active");
-      };
 
       return html;
     });
   });
-
-  //Handle Edit task
 }
-
-// queryEditForm.taskName.focus();
-// let taskNameValue = queryEditForm.taskName.value;
-// queryEditForm.taskName.value = "";
-// queryEditForm.taskName.value = taskNameValue;

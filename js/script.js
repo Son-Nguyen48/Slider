@@ -5,7 +5,6 @@ import project1 from "../js/formHandler.js";
 fetchTodo(Store.listTodo);
 
 const addForm = project1.container.querySelector(".add_form");
-
 const queryAddForm = project1.queryForm.bind(addForm)();
 
 queryAddForm.taskName.onkeyup = () =>
