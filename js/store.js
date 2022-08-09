@@ -113,6 +113,8 @@ function Store() {
       form.taskDescription.value = "";
       form.taskStatus.value = "";
       form.taskDueDate.value = "";
+      const selectedAttribute = document.createAttribute("selected");
+      form.taskPriority.firstElementChild.setAttributeNode(selectedAttribute);
 
       fetchTodo(this.listTodo);
     },
