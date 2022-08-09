@@ -8,7 +8,7 @@ const addForm = project1.container.querySelector(".add_form");
 const queryAddForm = project1.queryForm.bind(addForm)();
 
 queryAddForm.taskName.onkeyup = () =>
-  project1.onChangeTaskName.bind(queryAddForm)();
+  project1.onChangeEditTaskInput.bind(queryAddForm)();
 
 //Open form add Task
 
