@@ -4,59 +4,59 @@ function Store() {
   this.listTodo = [
     {
       id: 1,
-      todo__Title: "Go to the Gym",
-      todo_Description: "Go to somewhere!",
-      todo__Status: "Doing",
-      todo__CreatedAt: "2022-02-05",
+      title: "Go to the Gym",
+      description: "Go to somewhere!",
+      status: "Doing",
+      createdAt: "2022-02-05",
       priority: "Priority 1",
       color: "#db4c3f"
     },
 
     {
       id: 2,
-      todo__Title: "Go to the School",
-      todo_Description: "Go to somewhere!",
-      todo__Status: "Done",
-      todo__CreatedAt: "2022-06-01",
+      title: "Go to the School",
+      description: "Go to somewhere!",
+      status: "Done",
+      createdAt: "2022-06-01",
       priority: "Priority 3",
       color: "#246fe0"
     },
 
     {
       id: 3,
-      todo__Title: "Go to the Hospital",
-      todo_Description: "Go to somewhere! ",
-      todo__Status: "Doing",
-      todo__CreatedAt: "2022-02-08",
+      title: "Go to the Hospital",
+      description: "Go to somewhere! ",
+      status: "Doing",
+      createdAt: "2022-02-08",
       priority: "Priority 4",
-      color: "#000000"
+      color: "#1ca5b8"
     },
 
     {
       id: 4,
-      todo__Title: "Go to the Supermarket",
-      todo_Description: "Go to somewhere!",
-      todo__Status: "Done",
-      todo__CreatedAt: "2022-04-08",
+      title: "Go to the Supermarket",
+      description: "Go to somewhere!",
+      status: "Done",
+      createdAt: "2022-04-08",
       priority: "Priority 3",
       color: "#246fe0"
     },
     {
       id: 5,
-      todo__Title: "Go to the Movie theater",
-      todo_Description: "Go to somewhere!",
-      todo__Status: "Done",
-      todo__CreatedAt: "2022-04-08",
+      title: "Go to the Movie theater",
+      description: "Go to somewhere!",
+      status: "Done",
+      createdAt: "2022-04-08",
       priority: "Priority 2",
       color: "#eb8909"
     },
 
     {
       id: 6,
-      todo__Title: "Go to the Stadium",
-      todo_Description: "Go to somewhere!",
-      todo__Status: "Done",
-      todo__CreatedAt: "2022-04-08",
+      title: "Go to the Stadium",
+      description: "Go to somewhere!",
+      status: "Done",
+      createdAt: "2022-04-08",
       priority: "Priority 1",
       color: "#db4c3f"
     }
@@ -81,7 +81,7 @@ function Store() {
     {
       id: 4,
       priority: "Priority 4",
-      color: "#000000"
+      color: "#1ca5b8"
     }
   ];
 
@@ -93,10 +93,10 @@ function Store() {
 
       list.push({
         id: this.listTodo.length + 1,
-        todo__Title: `${form.taskName.value}`,
-        todo_Description: `${form.taskDescription.value}`,
-        todo__Status: `${form.taskStatus.value}`,
-        todo__CreatedAt: `${form.taskDueDate.value}`,
+        title: `${form.taskName.value}`,
+        description: `${form.taskDescription.value}`,
+        status: `${form.taskStatus.value}`,
+        createdAt: `${form.taskDueDate.value}`,
         color: `${
           this.listPriority.filter((option) => {
             return option.priority === form.taskPriority.value;
@@ -116,22 +116,20 @@ function Store() {
 
       fetchTodo(this.listTodo);
     },
-    updateTodo: (e, form, id) => {
-      e.preventDefault();
+    updateTodo: (form, id) => {
       this.listTodo = this.listTodo.map((task) => {
         if (task.id === id) {
-          task.todo__Title = form.querySelector(".taskName").value;
-          task.todo_Description = form.querySelector(".taskDescription").value;
-          task.todo__Status = form.querySelector(".taskStatus").value;
-          task.todo__CreatedAt = form.querySelector(".taskDueDate").value;
+          task.title = form.querySelector(".taskName").value;
+          task.description = form.querySelector(".taskDescription").value;
+          task.status = form.querySelector(".taskStatus").value;
+          task.createdAt = form.querySelector(".taskDueDate").value;
           task.priority = form.querySelector("#priority").value;
         }
         return task;
       });
       fetchTodo(this.listTodo);
     },
-    deleteTodo: (e, id) => {
-      e.preventDefault();
+    deleteTodo: (id) => {
       const taskDeletedIndex = this.listTodo.findIndex(
         (task) => task.id === id
       );

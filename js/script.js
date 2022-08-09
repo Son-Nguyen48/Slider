@@ -13,7 +13,7 @@ queryAddForm.taskName.onkeyup = () =>
 //Open form add Task
 
 const addTaskBtn = project1.container.querySelector(".add_todo_btn");
-addTaskBtn.addEventListener("click", (e) => {
+addTaskBtn.addEventListener("click", () => {
   project1.container
     .querySelector(".project_list-add_todo")
     .classList.remove("active");

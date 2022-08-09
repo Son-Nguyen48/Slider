@@ -15,10 +15,10 @@ export default function fetchTodo(listTodo) {
                   </svg>
                 </div>
                 <div class="todo-item-content">
-                    <p class="todo-title letter_spacing_small_text">${todo.todo__Title}</p>
-                    <p class="todo-content gray letter_spacing_small_text">${todo.todo_Description}</p>
-                    <span class="todo-status gray letter_spacing_small_text">${todo.todo__Status}</span>
-                    <span class="todo-created gray letter_spacing_small_text">${todo.todo__CreatedAt}</span>
+                    <p class="todo-title letter_spacing_small_text">${todo.title}</p>
+                    <p class="todo-content gray letter_spacing_small_text">${todo.description}</p>
+                    <span class="todo-status gray letter_spacing_small_text">${todo.status}</span>
+                    <span class="todo-created gray letter_spacing_small_text">${todo.createdAt}</span>
                 </div>
             </div>
             <div class="todo-edit_control">
@@ -50,10 +50,10 @@ export default function fetchTodo(listTodo) {
         <div class="project_list-edit_form hide">
             <div class="edit_form">
                 <div class="todo_content">
-                    <input class="taskName" type="text" placeholder="Task name" value="${todo.todo__Title}"/>
-                    <input class="taskDescription" type="text" placeholder="Description" value="${todo.todo_Description}"/>
-                    <input class="taskStatus" type="text" placeholder="Status" value="${todo.todo__Status}"/>
-                    <input type="date" class="taskDueDate" value="${todo.todo__CreatedAt}"/>
+                    <input class="taskName" type="text" placeholder="Task name" value="${todo.title}"/>
+                    <input class="taskDescription" type="text" placeholder="Description" value="${todo.description}"/>
+                    <input class="taskStatus" type="text" placeholder="Status" value="${todo.status}"/>
+                    <input type="date" class="taskDueDate" value="${todo.createdAt}"/>
                     <select name="priority" id="priority">
                       <option value="Select-Priority-for-the-task">
                         Select Priority for the task
@@ -83,7 +83,7 @@ export default function fetchTodo(listTodo) {
       //Delete task when click delete button
 
       const deleteTaskBtn = task.querySelector(".todo-edit_control-delete");
-      deleteTaskBtn.onclick = (e) => Store.deleteTodo(e, idTask);
+      deleteTaskBtn.onclick = () => Store.deleteTodo(idTask);
 
       //Handle actions in edit form
 
@@ -97,13 +97,12 @@ export default function fetchTodo(listTodo) {
       //Click Button edit task to open edit form
 
       const editTaskBtn = task.querySelector(".todo-edit_control-edit");
-      editTaskBtn.onclick = (e) => {
-        e.preventDefault();
+      editTaskBtn.onclick = () => {
         console.log("go here");
         task.firstElementChild.classList.remove("active");
         task.lastElementChild.classList.add("active");
         queryEditForm.taskName.focus();
-        let taskNameValue = queryEditForm.taskName.value;
+        const taskNameValue = queryEditForm.taskName.value;
         queryEditForm.taskName.value = "";
         queryEditForm.taskName.value = taskNameValue;
       };
@@ -111,8 +110,7 @@ export default function fetchTodo(listTodo) {
       //Click task element to open edit form focus and
       //move cursor to the end of task name line
 
-      task.firstElementChild.onclick = (e) => {
-        e.preventDefault();
+      task.firstElementChild.onclick = () => {
         task.firstElementChild.classList.remove("active");
         task.lastElementChild.classList.add("active");
         queryEditForm.taskName.focus();
@@ -121,8 +119,7 @@ export default function fetchTodo(listTodo) {
         queryEditForm.taskName.value = taskNameValue;
       };
 
-      queryEditForm.cancelBtn.onclick = (e) => {
-        e.preventDefault();
+      queryEditForm.cancelBtn.onclick = () => {
         task.firstElementChild.classList.add("active");
         editForm.classList.remove("active");
       };
@@ -150,25 +147,25 @@ export default function fetchTodo(listTodo) {
 
       //Handle Button Edit task when change value in edit form
 
-      queryEditForm.taskName.onkeyup = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
-      queryEditForm.taskDescription.onkeyup = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
-      queryEditForm.taskStatus.onkeyup = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
-      queryEditForm.taskDueDate.onkeyup = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
-      queryEditForm.taskPriority.onkeyup = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
-      queryEditForm.taskDueDate.onclick = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
-      queryEditForm.taskPriority.onclick = (e) =>
-        project1.onChangeEditTaskInput.bind(queryEditForm)(e);
+      queryEditForm.taskName.onkeyup = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
+      queryEditForm.taskDescription.onkeyup = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
+      queryEditForm.taskStatus.onkeyup = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
+      queryEditForm.taskDueDate.onkeyup = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
+      queryEditForm.taskPriority.onkeyup = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
+      queryEditForm.taskDueDate.onclick = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
+      queryEditForm.taskPriority.onclick = () =>
+        project1.onChangeEditTaskInput.bind(queryEditForm)();
 
       // Click confirm edit task handle
 
-      queryEditForm.confirmBtn.onclick = (e) =>
-        Store.updateTodo(e, editForm, idTask);
+      queryEditForm.confirmBtn.onclick = () =>
+        Store.updateTodo(editForm, idTask);
 
       return html;
     });

@@ -7,10 +7,6 @@
   color: rgb(209, 196, 196);
 }
 
-.letter_spacing_small_text {
-  letter-spacing: 1.2;
-}
-
 .hide {
   display: none;
 }

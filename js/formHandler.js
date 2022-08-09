@@ -17,7 +17,7 @@ function handleAddForm(container) {
 
   //Change button ability when change value of input in edit form
 
-  this.onChangeEditTaskInput = function (e) {
+  this.onChangeEditTaskInput = function () {
     const taskNameValue = this.taskName.value.trim();
     if (taskNameValue) {
       this.confirmBtn.classList.add("allowAddTask");
