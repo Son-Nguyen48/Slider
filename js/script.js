@@ -20,6 +20,7 @@ addTaskBtn.addEventListener("click", () => {
   project1.container
     .querySelector(".project_list-add_form")
     .classList.add("active");
+  queryAddForm.taskName.focus();
 });
 
 //Cancel add Task
