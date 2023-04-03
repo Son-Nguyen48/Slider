@@ -1,0 +1,29 @@
+.btnControlStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3rem;
+  color: #fff;
+  height: 2.8rem;
+  min-width: 2.8rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0 0.4rem;
+}
+
+.flex {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.centerThing {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.margin-top-left-menu-item {
+  margin-top: 1.6rem;
+}
