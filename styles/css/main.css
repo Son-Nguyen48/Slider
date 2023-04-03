@@ -74,6 +74,7 @@ html {
 body {
   font-family: "-apple-system", sans-serif;
   font-size: 1.6rem;
+<<<<<<< HEAD
   height: 100vh;
 }
 
@@ -353,6 +354,17 @@ main .project .add_todo_btn:hover .add_todo_btn-icon {
   background-color: #db4c3f;
   border-radius: 50%;
   padding: 0.12rem;
+=======
+}
+
+.item {
+  height: 30rem;
+}
+
+.next svg,
+.prev svg {
+  width: 20%;
+>>>>>>> master
 }
 
 /*# sourceMappingURL=main.css.map */

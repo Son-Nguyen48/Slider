@@ -18,6 +18,7 @@ html {
 body {
   font-family: "-apple-system", sans-serif;
   font-size: 1.6rem;
+<<<<<<< HEAD
   height: 100vh;
 }
 
@@ -351,5 +352,17 @@ main {
         }
       }
     }
+=======
+}
+
+.item {
+  height: 30rem;
+}
+
+.next,
+.prev {
+  svg {
+    width: 20%;
+>>>>>>> master
   }
 }

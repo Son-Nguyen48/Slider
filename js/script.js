@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import fetchTodo from "../js/fetchTodo.js";
 import Store from "../js/store.js";
 import project1 from "../js/formHandler.js";
@@ -38,3 +39,16 @@ queryAddForm.cancelBtn.onclick = (e) => {
 queryAddForm.confirmBtn.onclick = (e) => Store.addTodo(e, queryAddForm);
 
 export default project1;
+=======
+import displayItem from "./display-item.js";
+import { handleNextButton, handlePrevButton } from "./handle-button.js";
+
+const item = document.querySelector(".item");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
+
+item.style.backgroundImage = `url(${displayItem(item)})`;
+
+next.onclick = (e) => handleNextButton(item, e);
+prev.onclick = (e) => handlePrevButton(item, e);
+>>>>>>> master
